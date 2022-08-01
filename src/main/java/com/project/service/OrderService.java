@@ -5,6 +5,7 @@ import com.project.entity.PurchaseOrder;
 import com.project.event.OrderStatus;
 import com.project.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 public class OrderService {
 
@@ -14,6 +15,7 @@ public class OrderService {
     @Autowired
     private OrderStatusPublisher orderStatusPublisher;
 
+    @Transactional
     public PurchaseOrder createOrder(OrderRequestDTO orderRequestDto) {
 
         PurchaseOrder order = orderRepository.save(convertDtoToEntity(orderRequestDto));
