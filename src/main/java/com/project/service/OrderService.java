@@ -11,12 +11,15 @@ public class OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
+    @Autowired
+    private OrderStatusPublisher orderStatusPublisher;
+
     public PurchaseOrder createOrder(OrderRequestDTO orderRequestDto) {
 
         PurchaseOrder order = orderRepository.save(convertDtoToEntity(orderRequestDto));
         orderRequestDto.setOrderId(order.getId());
         //produce kafka event with status ORDER_CREATED
-
+        orderStatusPublisher.publishOrderEvent(orderRequestDto, OrderStatus.ORDER_CREATED);
 
         return order;
 
