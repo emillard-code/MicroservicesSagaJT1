@@ -1,5 +1,7 @@
 package com.project.entity;
 
+import com.project.event.OrderStatus;
+import com.project.event.PaymentStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
