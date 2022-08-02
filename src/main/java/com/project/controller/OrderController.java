@@ -26,7 +26,7 @@ public class OrderController {
     public List<PurchaseOrder> getOrders(){
 
         return orderService.getAllOrders();
-        
+
     }
 
 }
