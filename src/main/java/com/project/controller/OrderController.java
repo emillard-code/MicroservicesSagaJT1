@@ -6,6 +6,8 @@ import com.project.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/order")
 public class OrderController {
@@ -18,6 +20,13 @@ public class OrderController {
 
         return orderService.createOrder(orderRequestDto);
 
+    }
+
+    @GetMapping
+    public List<PurchaseOrder> getOrders(){
+
+        return orderService.getAllOrders();
+        
     }
 
 }
