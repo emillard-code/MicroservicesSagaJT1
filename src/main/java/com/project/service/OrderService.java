@@ -7,6 +7,8 @@ import com.project.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 public class OrderService {
 
     @Autowired
@@ -24,6 +26,12 @@ public class OrderService {
         orderStatusPublisher.publishOrderEvent(orderRequestDto, OrderStatus.ORDER_CREATED);
 
         return order;
+
+    }
+
+    public List<PurchaseOrder> getAllOrders(){
+
+        return orderRepository.findAll();
 
     }
 
