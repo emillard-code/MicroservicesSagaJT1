@@ -10,6 +10,9 @@ import java.util.function.Consumer;
 @Configuration
 public class EventConsumerConfig {
 
+    @Autowired
+    private OrderStatusUpdateHandler handler;
+
     @Bean
     public Consumer<PaymentEvent> paymentEventConsumer(){
         //listen payment-event-topic
